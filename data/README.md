@@ -18,8 +18,9 @@ en une commande, pour moins de deux centimes.
 
 `paroles_de_dl` dit si `texte` porte les mots de David Lisnard. 96 passages valent `false` :
 ce sont des textes écrits par la campagne à son sujet, conservés parce qu'ils documentent la
-communication, mais qui ne lui sont pas attribués. Quand l'un d'eux le cite entre guillemets,
-la citation est dans `citation_dl`.
+communication, mais qui ne lui sont pas attribués. Quand l'un d'eux porte une phrase entre
+guillemets, elle est dans `citations_entre_guillemets` : un candidat à vérifier à la source,
+pas une citation certifiée.
 
 ```python
 import json

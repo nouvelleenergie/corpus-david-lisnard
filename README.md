@@ -4,7 +4,7 @@ Corpus textuel des prises de parole publiques de **David Lisnard** et des public
 
 | | |
 |---|---|
-| Version | **2.0.0** |
+| Version | **2.0.1** |
 | Passages | **4 764** |
 | Dont paroles de David Lisnard | **4 461** (`paroles_de_dl`) |
 | Mots | **468 688**, dont 409 871 de lui |
@@ -65,7 +65,9 @@ Pour l'écrit social, non. Un compte de campagne publie trois choses mélangées
 | ses mots, plus un crédit | « ... » @davidlisnard hier soir à Benfeld. | `david-lisnard`, crédit déplacé dans `cadre_editorial` |
 | du texte sur lui | « @davidlisnard détaille la 5ᵉ phase du projet. » | `equipe` |
 
-Chaque passage porte donc `voix` et le booléen `paroles_de_dl`. Quand un passage est de l'équipe mais cite David Lisnard entre guillemets, la citation ressort dans `citation_dl` : rien n'est perdu, mais rien n'est attribué à tort.
+Chaque passage porte donc `voix` et le booléen `paroles_de_dl`. Quand un passage est de l'équipe, ce qui s'y trouve entre guillemets ressort dans `citations_entre_guillemets` : rien n'est perdu, mais rien n'est attribué à tort.
+
+Ce champ est un **candidat, pas une citation certifiée**. L'extraction ne retient que les suites de huit mots et plus, pour écarter les titres d'émission et les mots mis en relief, mais elle ne garantit pas que la phrase soit de lui : vérifiez à la source. 14 passages en portent une.
 
 La règle est lexicale, publiée, et tient en un fichier : [`scripts/lib_voix_post.py`](https://github.com/nouvelleenergie/corpus-david-lisnard/blob/main/scripts/lib_voix_post.py). Elle sert à **présélectionner**, pas à décider seule. Les cas qu'un motif ne peut pas trancher, parce qu'ils demandent de lire le sens, ont été relus un par un et chaque décision est publiée avec son motif dans [`data/revision-voix-posts.csv`](data/revision-voix-posts.csv). Exemple de ce que la règle ne voit pas : les publications au format « mythe ou réalité », où les phrases entre guillemets sont les idées reçues qu'il réfute, et non ses positions.
 
@@ -98,7 +100,7 @@ Un objet JSON par ligne dans [`data/corpus.jsonl`](data/corpus.jsonl). Schéma f
 | `voix` | chaîne | `david-lisnard`, `equipe`, `nouvelle-energie`, `nouvelle-energie-site` |
 | `paroles_de_dl` | booléen | vrai si `texte` porte ses propres mots. **Le champ sur lequel filtrer** |
 | `methode_voix` | chaîne | la règle qui a établi `voix` |
-| `citation_dl` | liste | quand `voix` vaut `equipe`, ses paroles entre guillemets dans ce passage |
+| `citations_entre_guillemets` | liste | quand `voix` vaut `equipe`, ce qui est entre guillemets dans ce passage. Candidat à vérifier, pas une citation certifiée |
 | `cadre_editorial` | chaîne | crédit ou appel à l'action retiré de `texte` parce qu'il n'est pas de lui |
 | `compte_source` | chaîne | compte de publication, `plateforme/identifiant` |
 | `compte_proprietaire` | chaîne | titulaire de ce compte |

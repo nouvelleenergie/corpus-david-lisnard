@@ -3,6 +3,23 @@
 Les identifiants (`id`) ne dépendent pas du texte. Toute version qui les déplace le dit ici,
 avec sa table de correspondance.
 
+## 2.0.1 — 15 octobre 2026
+
+Correction d'un défaut de la 2.0.0, trouvé en relisant ce qu'elle publiait.
+
+- `citation_dl` est renommé **`citations_entre_guillemets`**, parce que son nom promettait plus
+  que son contenu. L'extraction attrapait les titres d'émission (« 8h30 franceinfo »), les noms
+  de campus (« Laissez-nous faire ») et les mots mis en relief (« résistance »), tous présentés
+  comme des paroles de David Lisnard. Seules les suites de **huit mots ou plus** sont retenues,
+  et le champ est désormais documenté comme un **candidat à vérifier**, pas une citation
+  certifiée. 14 passages en portent une, contre 23 avant.
+- Les onze décisions relues à la main tranchent maintenant aussi sur la citation, colonne
+  `citation` de [`data/revision-voix-posts.csv`](data/revision-voix-posts.csv). Sans elle,
+  l'extraction automatique publiait les « mythes » réfutés comme ses positions, et la phrase de
+  Boualem Sansal à son sujet comme une citation de lui.
+
+Aucun passage ajouté ni retiré, aucun identifiant déplacé.
+
 ## 2.0.0 — 15 octobre 2026
 
 **4 764 passages**, dont 4 461 portant les paroles de David Lisnard.
@@ -17,8 +34,8 @@ de déplacement, communication municipale, citations d'autres intervenants.
   `paroles_de_dl` pour n'avoir que ses mots.
 - **96 passages** sont désormais étiquetés `voix: equipe`. Ils restent dans le corpus parce
   qu'ils documentent la communication de campagne, mais ils ne lui sont plus attribués.
-- Quand un passage d'équipe le cite entre guillemets, la citation ressort dans **`citation_dl`**.
-  23 passages sont concernés.
+- Quand un passage d'équipe porte une phrase entre guillemets, elle ressort dans
+  **`citation_dl`** (renommé `citations_entre_guillemets` en 2.0.1).
 - Le crédit ajouté sous ses mots (« @davidlisnard hier soir à Benfeld ») sort de `texte` et passe
   dans **`cadre_editorial`**. 122 passages sont concernés.
 - **`compte_source`** et **`compte_proprietaire`** donnent le compte de publication et son

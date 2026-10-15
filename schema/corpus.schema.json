@@ -57,7 +57,7 @@
       "type": "string",
       "description": "Regle qui a etabli `voix`. Voir docs/METHODE.md."
     },
-    "citation_dl": {
+    "citations_entre_guillemets": {
       "type": [
         "array",
         "null"
@@ -65,7 +65,7 @@
       "items": {
         "type": "string"
       },
-      "description": "Quand `voix` vaut `equipe`, ses paroles entre guillemets dans ce passage, pour ne rien perdre."
+      "description": "Quand `voix` vaut `equipe`, les suites entre guillemets de huit mots ou plus trouvees dans ce passage. CANDIDAT A VERIFIER, pas une citation certifiee de David Lisnard : l'extraction ne distingue pas une phrase prononcee d'une incise du redacteur."
     },
     "cadre_editorial": {
       "type": [

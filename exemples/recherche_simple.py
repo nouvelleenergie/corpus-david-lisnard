@@ -58,6 +58,6 @@ if __name__ == "__main__":
               f"{' · ' + e['titre_source'] if e['titre_source'] else ''}"
               f"{'' if e['paroles_de_dl'] else '  ⚠ texte de campagne, pas ses paroles'}")
         print(f"  {e['texte'][:400]}")
-        if e["citation_dl"]:
-            print(f"  citation de lui : « {e['citation_dl'][0][:200]} »")
+        if e["citations_entre_guillemets"]:
+            print(f"  entre guillemets (a verifier) : « {e['citations_entre_guillemets'][0][:200]} »")
         print(f"  → {e['url_source'] or e.get('reference_papier') or 'sans lien'}")
