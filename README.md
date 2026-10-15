@@ -21,7 +21,8 @@ La date de génération fait foi dans [`data/stats.json`](data/stats.json).
 | `interview` | 2 612 | réponses en plateau et en radio, 25 médias |
 | `post` | 1 229 | publications sur ses comptes |
 | `discours` | 391 | six prises de parole publiques, transcrites intégralement |
-| `book_tribune` | 341 | *Ainsi va la France* (2025) |
+| `tribune` | 277 | 78 tribunes de presse, 14 médias, 2014 à 2024 |
+| `book_tribune` | 64 | textes de liaison du recueil *Ainsi va la France* (2025) |
 | `programme` | 157 | programme officiel du site et documents PDF associés |
 | `fiche_2027` | 50 | questions-réponses du site de campagne |
 
@@ -35,6 +36,12 @@ La date de génération fait foi dans [`data/stats.json`](data/stats.json).
 | 03/07/2026 | Saint-Raphaël | 79 | 15 204 |
 | 29/08/2026 | Campus de La Gagne, Cannes | 85 | 16 748 |
 | 25/09/2026 | Benfeld, Alsace | 67 | 13 194 |
+
+### Tribunes de presse
+
+78 tribunes signées ou cosignées par David Lisnard, parues entre 2014 et 2024 : L'Opinion (123 passages), Le Figaro (78), Atlantico (23), Le Journal du dimanche (10), Les Échos (9), Le Monde, Le Point, Marianne, Valeurs actuelles, La Tribune, Nice-matin, Le HuffPost, La Revue politique et parlementaire, 25 millions de propriétaires.
+
+18 d'entre elles sont cosignées ; le champ `cosignataires` les nomme. Ces tribunes sont des imprimés : `url_source` vaut `null` et `reference_papier` porte le crédit de parution, par exemple `L'Opinion, 21 novembre 2024`.
 
 ### Médias et plateformes
 
@@ -54,7 +61,9 @@ Publications : X (394), Instagram (384), Facebook (200), YouTube (146), TikTok (
 
 **5. Dédoublonnage.** À texte identique, une seule version est conservée, celle qui a obtenu le plus d'engagement d'après les compteurs bruts de la plateforme.
 
-**6. Thèmes.** Dérivés par lexique sur le texte, 18 thèmes, sans modèle de langage. Méthode détaillée dans [`docs/METHODE.md`](docs/METHODE.md).
+**6. Tribunes.** Les tribunes proviennent du recueil *Ainsi va la France* (2025), qui porte lui-même leur attribution dans sa table des matières, sous la forme `Titre (cosigné avec X, Le Figaro, 12 septembre 2022)`. Cette table est lue, les 78 entrées en sont extraites avec média, date et cosignataires, et chaque passage est rattaché à sa tribune par sa pagination. Les textes de liaison écrits pour le recueil, qui ne sont parus nulle part ailleurs, restent typés `book_tribune`.
+
+**7. Thèmes.** Dérivés par lexique sur le texte, 18 thèmes, sans modèle de langage. Méthode détaillée dans [`docs/METHODE.md`](docs/METHODE.md).
 
 ## Schéma
 
@@ -74,6 +83,7 @@ Un objet JSON par ligne dans [`data/corpus.jsonl`](data/corpus.jsonl). Schéma f
 | `date` | chaîne | `AAAA-MM-JJ`, date de l'intervention et non de la mise en ligne |
 | `precision_date` | chaîne | `jour`, ou `null` |
 | `lieu`, `plateforme` | chaîne | contexte |
+| `cosignataires` | chaîne | pour une tribune cosignée |
 | `t_debut_s`, `t_fin_s`, `duree_s` | entier | position et durée dans la vidéo, en secondes |
 | `video_id` | chaîne | identifiant YouTube |
 | `themes` | liste | jusqu'à trois thèmes |
@@ -109,7 +119,7 @@ Les vecteurs ne sont pas versionnés : ils dépendent du modèle et pèsent 27 M
 - **708 passages ont une transcription professionnelle vérifiée.** Les autres viennent d'une extraction antérieure, fiable sur le fond, moins sur la ponctuation.
 - **2 350 passages sur 4 780 se terminent sur une ponctuation.** Filtrez sur `extrait_complet` pour citer mot à mot.
 - **1 013 passages restent en thème « divers »**, pour l'essentiel des fragments de moins de 25 mots. Les thèmes sont une aide au tri, pas une classification de référence.
-- **548 passages n'ont pas de date** : textes mis à jour en continu ou sources imprimées.
+- **271 passages n'ont pas de date** : textes mis à jour en continu ou sources imprimées.
 - Les positions évoluent. Datez toujours une citation.
 
 ## Licence

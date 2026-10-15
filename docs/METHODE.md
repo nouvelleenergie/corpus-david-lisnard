@@ -10,7 +10,8 @@ Comment ce corpus est construit, et ce que chaque garantie vaut exactement.
 | Interviews | plateaux télé et radio | transcription, puis extraction des seules réponses de David Lisnard |
 | Publications | ses comptes Instagram, Facebook, X, LinkedIn, TikTok, YouTube | texte intégral de la publication |
 | Programme | `unenouvelleenergie.fr/notre-programme/` | lecture de l'API du site, découpage sur les sections |
-| Imprimé | *Ainsi va la France* (2025) | texte intégral, découpé selon la pagination |
+| Tribunes | presse, 2014 à 2024 | 78 tribunes, attribution lue dans la table des matières du recueil |
+| Recueil | *Ainsi va la France* (2025) | textes de liaison seuls, le reste étant typé en tribunes |
 | Fiches 2027 | site de campagne | questions-réponses officielles |
 
 ## 2. Établir qui parle
@@ -62,6 +63,23 @@ du document, qui rend chaque colonne entière.
 d'une reconnaissance optique de caractères. Le corps du document est propre, mais des coquilles
 sont possibles, en particulier sur les chiffres et les noms propres. Le champ `ocr` de la
 classification le signale en interne.
+
+## 4 ter bis. Du recueil aux tribunes
+
+*Ainsi va la France* (2025) est un recueil : des tribunes déjà parues dans la presse, reliées par
+des textes écrits pour l'ouvrage. Le livre porte son attribution dans sa propre table des matières :
+
+    Peut-on arrêter la décivilisation ? (cosigné avec Naïma M'Faddel et Maurice Berger,
+    Le Figaro, 12 septembre 2022) ........................ 360
+
+Cette table est analysée, et chaque passage est rattaché à sa tribune par la pagination. Le
+résultat est vérifiable : **78 tribunes, qui reçoivent toutes du texte, 0 passage non rattaché**.
+277 passages sur 341 tombent dans une tribune, soit 81 % du recueil ; les 64 autres sont les
+textes de liaison, qui ne sont parus nulle part ailleurs et restent typés `book_tribune`.
+
+L'attribution vient donc de l'éditeur lui-même, pas d'une reconstitution de notre part. Nous
+n'avons en revanche **pas vérifié article par article en ligne** : la plupart de ces tribunes
+sont derrière un péage et mal indexées.
 
 ## 4 ter. Les sources imprimées
 

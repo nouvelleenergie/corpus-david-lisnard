@@ -44,6 +44,7 @@
         "interview",
         "post",
         "discours",
+        "tribune",
         "programme",
         "fiche_2027",
         "book_tribune"
@@ -150,7 +151,14 @@
         "string",
         "null"
       ],
-      "description": "Référence paginée, pour le livre uniquement."
+      "description": "Référence de parution pour une source imprimée : crédit de presse pour une tribune, page pour le recueil."
+    },
+    "cosignataires": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Cosignataires d'une tribune."
     }
   }
 }
