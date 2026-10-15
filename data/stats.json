@@ -1,0 +1,40 @@
+{
+  "genere_le": "2026-10-15",
+  "passages": 4780,
+  "mots": 470449,
+  "par_type": {
+    "programme": 157,
+    "discours": 391,
+    "interview": 2612,
+    "post": 1229,
+    "fiche_2027": 50,
+    "book_tribune": 341
+  },
+  "par_theme": {
+    "divers": 1014,
+    "economie-travail": 528,
+    "finances-publiques": 495,
+    "etat-bureaucratie": 359,
+    "securite": 271,
+    "education": 267,
+    "collectivites": 252,
+    "ecologie-energie": 205,
+    "institutions-democratie": 197,
+    "culture-identite": 170,
+    "justice": 164,
+    "europe-international": 159,
+    "logement-territoire": 120,
+    "methode-projet": 119,
+    "retraites": 117,
+    "sante-social": 104,
+    "numerique-ia": 88,
+    "immigration": 85,
+    "agriculture": 66
+  },
+  "transcription_verifiee": 708,
+  "extraits_complets": 2350,
+  "periode": [
+    "2014-03-25",
+    "2026-10-11"
+  ]
+}

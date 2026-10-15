@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nouvelleenergie/corpus-david-lisnard/schema/corpus.schema.json",
+  "title": "Passage du corpus David Lisnard",
+  "description": "Un objet par ligne dans data/corpus.jsonl.",
+  "type": "object",
+  "required": [
+    "id",
+    "texte",
+    "locuteur",
+    "type_source",
+    "url_source",
+    "themes",
+    "nb_mots"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identifiant stable dérivé du contenu."
+    },
+    "texte": {
+      "type": "string",
+      "minLength": 1
+    },
+    "locuteur": {
+      "type": "string",
+      "enum": [
+        "David Lisnard",
+        "Nouvelle Énergie (programme officiel)",
+        "Nouvelle Énergie (site de campagne)"
+      ]
+    },
+    "attribution": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Méthode d'établissement du locuteur."
+    },
+    "type_source": {
+      "type": "string",
+      "enum": [
+        "interview",
+        "post",
+        "discours",
+        "programme",
+        "fiche_2027",
+        "book_tribune"
+      ]
+    },
+    "titre_source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "media": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url_source": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "description": "Lien vers l'original, horodaté pour l'oral. null pour le livre, qui est un imprimé."
+    },
+    "date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "precision_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "jour",
+        null
+      ]
+    },
+    "lieu": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "plateforme": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "t_debut_s": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "t_fin_s": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "duree_s": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "video_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "nb_mots": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "extrait_complet": {
+      "type": "boolean",
+      "description": "Le passage se termine sur une ponctuation."
+    },
+    "transcription_verifiee": {
+      "type": "boolean",
+      "description": "Transcription professionnelle avec séparation des locuteurs."
+    },
+    "reference_papier": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Référence paginée, pour le livre uniquement."
+    }
+  }
+}

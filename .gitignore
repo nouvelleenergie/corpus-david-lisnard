@@ -1,0 +1,4 @@
+data/vecteurs.npy
+__pycache__/
+*.pyc
+.DS_Store
