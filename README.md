@@ -41,7 +41,7 @@ La date de génération fait foi dans [`data/stats.json`](data/stats.json).
 
 78 tribunes signées ou cosignées par David Lisnard, parues entre 2014 et 2024 : L'Opinion (123 passages), Le Figaro (78), Atlantico (23), Le Journal du dimanche (10), Les Échos (9), Le Monde, Le Point, Marianne, Valeurs actuelles, La Tribune, Nice-matin, Le HuffPost, La Revue politique et parlementaire, 25 millions de propriétaires.
 
-18 d'entre elles sont cosignées ; le champ `cosignataires` les nomme. Ces tribunes sont des imprimés : `url_source` vaut `null` et `reference_papier` porte le crédit de parution, par exemple `L'Opinion, 21 novembre 2024`.
+L'inventaire complet des 78 tribunes, avec média, date, cosignataires et volume, est dans [`data/tribunes.json`](data/tribunes.json). 18 d'entre elles sont cosignées ; le champ `cosignataires` les nomme. Ces tribunes sont des imprimés : `url_source` vaut `null` et `reference_papier` porte le crédit de parution, par exemple `L'Opinion, 21 novembre 2024`.
 
 ### Médias et plateformes
 
