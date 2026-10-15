@@ -149,6 +149,7 @@ Les vecteurs ne sont pas versionnés : ils dépendent du modèle et pèsent 27 M
 
 - **96 passages sont du texte de campagne sur lui**, pas de lui : descriptifs de vidéo, comptes rendus de déplacement, communication municipale. Ils sont étiquetés `voix: equipe` et `paroles_de_dl: false`. Filtrez.
 - **La règle d'attribution de l'écrit social est lexicale.** Elle ne lit pas le sens. Elle manque le compte tiers qui raconte un événement sans jamais prendre David Lisnard pour sujet. Les cas repérés sont corrigés dans `data/revision-voix-posts.csv` ; il en reste probablement.
+- **79 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » sans la question qui précédait.** « Oui, oui, il y a trop d'immigration quantitativement puisque… » : oui à quoi. La question du journaliste n'entre pas dans le corpus, par principe, et elle n'est pas conservée à part. Le timecode de `url_source` ouvre la vidéo à la seconde : c'est là qu'on retrouve le contexte.
 - **3 003 passages sur 4 764 portent un timecode.** Pour ceux-là, `url_source` ouvre la vidéo à la seconde exacte. Vérifiez à l'écoute avant toute citation publique.
 - **708 passages ont une transcription professionnelle vérifiée.** Les autres viennent d'une extraction antérieure, fiable sur le fond, moins sur la ponctuation.
 - **2 470 passages sur 4 764 se terminent sur une ponctuation.** Filtrez sur `extrait_complet` pour citer mot à mot.

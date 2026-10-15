@@ -142,5 +142,6 @@ Le même texte publié sur plusieurs réseaux n'apparaît qu'une fois. À conten
 ## 8. Ce que nous ne garantissons pas
 
 - Que chaque mot soit transcrit exactement. Une transcription automatique se trompe sur les noms propres et les chiffres. **Vérifiez à l'écoute avant toute citation publique**, le timecode est là pour ça.
+- Que chaque réponse soit lisible seule. 79 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » : la question qui précédait n'est pas dans le corpus, par principe, et n'est pas conservée dans un champ à part. Le timecode ouvre la vidéo à la seconde, c'est là qu'est le contexte.
 - Que le corpus soit exhaustif. Il couvre les prises de parole repérées par notre veille, pas la totalité des interventions.
 - Que les positions soient à jour. Elles évoluent ; datez toujours.
