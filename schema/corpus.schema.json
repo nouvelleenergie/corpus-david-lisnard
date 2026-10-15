@@ -6,7 +6,10 @@
   "type": "object",
   "required": [
     "id",
+    "cle_source",
     "texte",
+    "voix",
+    "paroles_de_dl",
     "locuteur",
     "type_source",
     "url_source",
@@ -17,19 +20,59 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Identifiant stable dérivé du contenu."
+      "description": "Identifiant stable : sha1(type_source|url ou reference de la source|rang dans la source), tronque a 16 caracteres. Il ne depend PAS du texte : corriger une transcription ne le change pas. Il ne bouge que si une source est reextraite, ce qui est annonce dans CHANGELOG.md avec la table de correspondance."
+    },
+    "cle_source": {
+      "type": "string",
+      "description": "Meme information que `id`, en clair : type:source#rang."
     },
     "texte": {
       "type": "string",
       "minLength": 1
     },
+    "voix": {
+      "type": "string",
+      "enum": [
+        "david-lisnard",
+        "equipe",
+        "nouvelle-energie",
+        "nouvelle-energie-site"
+      ],
+      "description": "Qui parle dans `texte`. `equipe` designe un texte redige par la campagne au sujet de David Lisnard."
+    },
+    "paroles_de_dl": {
+      "type": "boolean",
+      "description": "Vrai si `texte` porte ses propres mots. C'est le champ sur lequel filtrer pour n'avoir que lui."
+    },
     "locuteur": {
       "type": "string",
       "enum": [
         "David Lisnard",
+        "Nouvelle Énergie (équipe)",
         "Nouvelle Énergie (programme officiel)",
         "Nouvelle Énergie (site de campagne)"
       ]
+    },
+    "methode_voix": {
+      "type": "string",
+      "description": "Regle qui a etabli `voix`. Voir docs/METHODE.md."
+    },
+    "citation_dl": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "description": "Quand `voix` vaut `equipe`, ses paroles entre guillemets dans ce passage, pour ne rien perdre."
+    },
+    "cadre_editorial": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Credit ou appel a l'action retire de `texte` parce qu'il n'est pas de lui."
     },
     "attribution": {
       "type": [
@@ -70,6 +113,27 @@
       "format": "uri",
       "description": "Lien vers l'original, horodaté pour l'oral. null pour le livre, qui est un imprimé."
     },
+    "reference_papier": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Référence de parution pour une source imprimée : crédit de presse pour une tribune, page pour le recueil."
+    },
+    "compte_source": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Compte de publication, plateforme/identifiant."
+    },
+    "compte_proprietaire": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Titulaire de ce compte, d'apres la table des comptes."
+    },
     "date": {
       "type": [
         "string",
@@ -92,6 +156,13 @@
         "string",
         "null"
       ]
+    },
+    "cosignataires": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Cosignataires d'une tribune."
     },
     "plateforme": {
       "type": [
@@ -145,20 +216,6 @@
     "transcription_verifiee": {
       "type": "boolean",
       "description": "Transcription professionnelle avec séparation des locuteurs."
-    },
-    "reference_papier": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "description": "Référence de parution pour une source imprimée : crédit de presse pour une tribune, page pour le recueil."
-    },
-    "cosignataires": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "description": "Cosignataires d'une tribune."
     }
   }
 }

@@ -46,6 +46,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("question"); ap.add_argument("-k", type=int, default=5)
     ap.add_argument("--type", help="interview, discours, post, programme, fiche_2027")
+    ap.add_argument("--tout", action="store_true", help="inclure les textes ecrits par la campagne sur lui")
     a = ap.parse_args()
     try:
         from openai import OpenAI
@@ -63,6 +64,8 @@ if __name__ == "__main__":
     for i in ordre:
         e = corpus[int(i)]
         if a.type and e["type_source"] != a.type: continue
+        # Par defaut, on ne cite que lui : le reste est du texte de campagne sur lui.
+        if not a.tout and not e["paroles_de_dl"]: continue
         print(f"\n[{score[i]:.3f}] {e['date'] or 'sans date'} · {e['media'] or e['type_source']}")
         print(f"  {e['texte'][:400]}")
         print(f"  → {e['url_source'] or e.get('reference_papier') or 'sans lien'}")

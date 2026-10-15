@@ -30,6 +30,38 @@ Les trois doivent concorder. Si l'un diverge, la vidéo n'entre pas dans le corp
 
 Le champ `attribution` conserve la méthode appliquée à chaque passage.
 
+## 2 bis. Qui parle dans une publication de réseau social
+
+Les trois signaux ci-dessus valent pour l'oral. Ils ne valent pas pour l'écrit : une publication n'a pas de tour de parole, et un compte de campagne publie trois choses mélangées.
+
+| | Exemple | `voix` |
+|---|---|---|
+| ses mots | « Ces jeunes ont besoin de discipline. » | `david-lisnard` |
+| ses mots, plus un crédit | « ... » @davidlisnard hier soir à Benfeld. | `david-lisnard` |
+| du texte sur lui | « @davidlisnard détaille la 5ᵉ phase du projet. » | `equipe` |
+
+**La provenance d'abord, et elle ne se devine pas.** Chaque publication est rattachée à son compte par son adresse, et le compte à son titulaire par la table des comptes de la collecte. `compte_source` et `compte_proprietaire` sortent de là, pas d'une lecture du texte. 96 passages viennent de comptes qui ne sont pas les siens, ou portent du texte écrit sur lui.
+
+**Ensuite le texte.** Le passage est découpé en segments, les citations étant masquées d'abord pour ne pas être coupées. Chaque segment qui le désigne est pesé :
+
+- au-delà de six mots utiles autour de la mention, ce n'est plus un crédit, c'est un **énoncé sur lui** ;
+- un énoncé placé **avant ou entre** les segments de contenu fait basculer le passage du côté de l'équipe. C'est le cas des descriptifs de vidéo (« David Lisnard était l'invité du 7h30 de franceinfo, interrogé par Alix Bouilhaguet ») et des comptes rendus de déplacement ;
+- un énoncé placé **après tout le contenu** est un cadre éditorial, crédit ou appel à l'action ajouté sous ses mots. Le texte reste de lui, le cadre part dans `cadre_editorial` et sort de `texte`.
+
+Les passages entre guillemets restent toujours de lui. Quand le passage est classé `equipe`, ils ressortent dans `citation_dl` : rien n'est perdu, mais rien n'est attribué à tort.
+
+**Deux garde-fous.** Les liens sont retirés avant toute détection, parce qu'une adresse porte souvent son nom (`/interview-exclusive-de-david-lisnard-sur-cannes-radio`). Et si la séparation du cadre fait perdre plus de 40 % des mots du passage, elle est abandonnée et le texte entier est publié tel quel : mieux vaut un crédit résiduel qu'une citation tronquée.
+
+**Ce que la règle ne sait pas faire.** Elle est lexicale, elle ne lit pas le sens. Elle ne voit pas le compte tiers qui raconte un événement sans jamais le prendre pour sujet, ni les publications au format « mythe ou réalité », où les phrases entre guillemets sont les idées reçues qu'il réfute et non ses positions. La règle sert donc à **présélectionner**. Les cas qu'un motif ne peut pas trancher ont été relus un par un, et chaque décision est publiée avec son motif dans [`../data/revision-voix-posts.csv`](../data/revision-voix-posts.csv). Le code de la règle est dans [`../scripts/lib_voix_post.py`](../scripts/lib_voix_post.py).
+
+## 2 ter. Les identifiants
+
+`id` vaut `sha1(type_source|source|rang dans la source)` tronqué à seize caractères. **Le texte n'entre pas dans le calcul.** Corriger une transcription, retirer un crédit, réparer une ponctuation : l'identifiant ne bouge pas. C'est ce qui permet de construire dessus.
+
+Il ne change que si une source est réextraite et que le rang des passages s'en trouve modifié. Ce cas est annoncé dans [`../CHANGELOG.md`](../CHANGELOG.md), avec la table de correspondance entre l'ancien et le nouvel identifiant. La version 1 calculait l'identifiant sur le texte : la correspondance avec la version 2 est dans [`../data/ids-v1-vers-v2.csv`](../data/ids-v1-vers-v2.csv).
+
+`cle_source` porte la même information en clair, sous la forme `type:source#rang`.
+
 ## 3. Découper sans fabriquer de fausses citations
 
 Deux règles.
