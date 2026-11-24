@@ -16,7 +16,7 @@ en une commande, pour moins de deux centimes.
 
 ## Le champ sur lequel filtrer
 
-`paroles_de_dl` dit si `texte` porte les mots de David Lisnard. 96 passages valent `false` :
+`paroles_de_dl` dit si `texte` porte les mots de David Lisnard. 162 passages valent `false` :
 ce sont des textes écrits par la campagne à son sujet, conservés parce qu'ils documentent la
 communication, mais qui ne lui sont pas attribués. Quand l'un d'eux porte une phrase entre
 guillemets, elle est dans `citations_entre_guillemets` : un candidat à vérifier à la source,
@@ -25,7 +25,7 @@ pas une citation certifiée.
 ```python
 import json
 corpus = [json.loads(l) for l in open("data/corpus.jsonl", encoding="utf-8")]
-lui = [e for e in corpus if e["paroles_de_dl"]]      # 4 461 passages
+lui = [e for e in corpus if e["paroles_de_dl"]]      # 5 712 passages
 ```
 
 ## Les identifiants

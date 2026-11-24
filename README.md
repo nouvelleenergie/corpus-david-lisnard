@@ -4,27 +4,27 @@ Corpus textuel des prises de parole publiques de **David Lisnard** et des public
 
 | | |
 |---|---|
-| Version | **2.0.1** |
-| Passages | **4 764** |
-| Dont paroles de David Lisnard | **4 461** (`paroles_de_dl`) |
-| Mots | **468 688**, dont 409 871 de lui |
-| Période couverte | **25 mars 2014 → 11 octobre 2026** |
-| Dont 2026 | 2 566 passages |
-| Passages horodatés à la seconde | 3 003 |
-| Dernière génération | **15 octobre 2026** |
+| Version | **2.1.0** |
+| Passages | **6 081** |
+| Dont paroles de David Lisnard | **5 712** (`paroles_de_dl`) |
+| Mots | **561 475**, dont 499 741 de lui |
+| Période couverte | **4 février 2010 → 22 novembre 2026** |
+| Dont 2026 | 3 375 passages |
+| Passages horodatés à la seconde | 3 485 |
+| Dernière génération | **24 novembre 2026** |
 | Format | JSONL, CSV, découpage par thème |
 
 La version et la date de génération font foi dans [`data/stats.json`](data/stats.json). Les changements d'une version à l'autre sont dans [`CHANGELOG.md`](CHANGELOG.md).
 
-> **Filtrez sur `paroles_de_dl`** pour ne travailler que sur ses propres mots. 96 passages sont du texte écrit par la campagne à son sujet : ils restent dans le corpus, étiquetés, parce qu'ils documentent la communication, mais ce ne sont pas ses paroles. Voir [Qui parle](#qui-parle).
+> **Filtrez sur `paroles_de_dl`** pour ne travailler que sur ses propres mots. 162 passages sont du texte écrit par la campagne à son sujet : ils restent dans le corpus, étiquetés, parce qu'ils documentent la communication, mais ce ne sont pas ses paroles. Voir [Qui parle](#qui-parle).
 
 ## Composition
 
 | `type_source` | Passages | Contenu |
 |---|---:|---|
-| `interview` | 2 612 | réponses en plateau et en radio, 25 médias |
-| `post` | 1 213 | publications des comptes de campagne, dont 96 écrites par l'équipe |
-| `discours` | 391 | six prises de parole publiques, transcrites intégralement |
+| `interview` | 3 085 | réponses en plateau et en radio, 31 sources |
+| `post` | 2 048 | publications des comptes de campagne, dont 162 écrites par l'équipe |
+| `discours` | 400 | sept prises de parole publiques, transcrites intégralement |
 | `tribune` | 277 | 78 tribunes de presse, 14 médias, 2014 à 2024 |
 | `book_tribune` | 64 | textes de liaison du recueil *Ainsi va la France* (2025) |
 | `programme` | 157 | programme officiel du site et documents PDF associés |
@@ -40,6 +40,7 @@ La version et la date de génération font foi dans [`data/stats.json`](data/sta
 | 03/07/2026 | Saint-Raphaël | 79 | 15 204 |
 | 29/08/2026 | Campus de La Gagne, Cannes | 85 | 16 748 |
 | 25/09/2026 | Benfeld, Alsace | 67 | 13 194 |
+| 19/10/2026 | Cannes, hôtel de ville | 9 | 1 636 |
 
 ### Tribunes de presse
 
@@ -49,9 +50,9 @@ L'inventaire complet des 78 tribunes, avec média, date, cosignataires et volume
 
 ### Médias et plateformes
 
-Interviews : Europe 1 (449), Sud Radio (410), BFMTV (200), franceinfo (180), RMC (176), Public Sénat (162), Le Figaro (129), LCI (113), Le Crayon (85), Grand Angle (83), TF1 (79), CNews (63), et 13 autres.
+Interviews : Europe 1 (488), Sud Radio (410), BFMTV (373), RMC (200), franceinfo (180), Public Sénat (162), LCI (135), Le Figaro (129), « Et si l'économie sauvait l'écologie ? » (87), Le Crayon (85), TF1 (84), Grand Angle (83), CNews (63), et 17 autres sources.
 
-Publications : X (388), Instagram (381), Facebook (199), YouTube (140), TikTok (60), LinkedIn (45). Le champ `compte_source` donne le compte exact, et `compte_proprietaire` son titulaire, repris de la table des comptes et non devinés du texte.
+Publications : X (951), Instagram (521), YouTube (240), Facebook (214), TikTok (63), LinkedIn (59). Les publications X remontent à février 2010 (509 d'avant 2026). Le champ `compte_source` donne le compte exact, et `compte_proprietaire` son titulaire, repris de la table des comptes et non devinés du texte.
 
 ## Qui parle
 
@@ -67,9 +68,9 @@ Pour l'écrit social, non. Un compte de campagne publie trois choses mélangées
 
 Chaque passage porte donc `voix` et le booléen `paroles_de_dl`. Quand un passage est de l'équipe, ce qui s'y trouve entre guillemets ressort dans `citations_entre_guillemets` : rien n'est perdu, mais rien n'est attribué à tort.
 
-Ce champ est un **candidat, pas une citation certifiée**. L'extraction ne retient que les suites de huit mots et plus, pour écarter les titres d'émission et les mots mis en relief, mais elle ne garantit pas que la phrase soit de lui : vérifiez à la source. 14 passages en portent une.
+Ce champ est un **candidat, pas une citation certifiée**. L'extraction ne retient que les suites de huit mots et plus, pour écarter les titres d'émission et les mots mis en relief, mais elle ne garantit pas que la phrase soit de lui : vérifiez à la source. 18 passages en portent une.
 
-La règle est lexicale, publiée, et tient en un fichier : [`scripts/lib_voix_post.py`](https://github.com/nouvelleenergie/corpus-david-lisnard/blob/main/scripts/lib_voix_post.py). Elle sert à **présélectionner**, pas à décider seule. Les cas qu'un motif ne peut pas trancher, parce qu'ils demandent de lire le sens, ont été relus un par un et chaque décision est publiée avec son motif dans [`data/revision-voix-posts.csv`](data/revision-voix-posts.csv). Exemple de ce que la règle ne voit pas : les publications au format « mythe ou réalité », où les phrases entre guillemets sont les idées reçues qu'il réfute, et non ses positions.
+La règle est lexicale, publiée, et tient en un fichier : [`scripts/lib_voix_post.py`](https://github.com/nouvelleenergie/corpus-david-lisnard/blob/main/scripts/lib_voix_post.py). Elle sert à **présélectionner**, pas à décider seule. Les cas qu'un motif ne peut pas trancher, parce qu'ils demandent de lire le sens, ont été relus un par un et chaque décision est publiée avec son motif dans [`data/revision-voix-posts.csv`](data/revision-voix-posts.csv). Exemple de ce que la règle ne voit pas : les publications au format « mythe ou réalité » ou « vrai ou faux », où la phrase publiée est l'idée reçue qu'il réfute ou la question posée par le compte, et non sa position.
 
 Le détail du compte de chaque méthode est dans `par_methode_voix`, dans [`data/stats.json`](data/stats.json).
 
@@ -79,7 +80,9 @@ Le détail du compte de chaque méthode est dans `par_methode_voix`, dans [`data
 
 **2. Transcription.** ElevenLabs Scribe v1 avec diarisation et horodatage au mot. Pour les documents PDF à deux colonnes, extraction en mode flux (`pdftotext` sans `-layout`, qui autrement entrelace les colonnes). Un livret au format image est passé en reconnaissance optique (`pdftoppm -r 300` puis `tesseract -l fra`).
 
-**3. Attribution du locuteur.** Établie avant tout découpage, sur trois signaux textuels concordants : la concentration des points d'interrogation, qui nomme qui par son nom, et la répartition du temps de parole. Les trois doivent concorder, sinon la source est écartée. **Seules les paroles de David Lisnard entrent ; la parole des journalistes et des autres intervenants est exclue.**
+**3. Attribution du locuteur.** Établie avant tout découpage, sur trois signaux textuels concordants : la concentration des points d'interrogation, qui nomme qui par son nom, et la répartition du temps de parole. Les trois doivent concorder, sinon la source est écartée. **Seules les paroles de David Lisnard entrent ; la parole des journalistes et des autres intervenants est exclue** (avec une limite connue pour les passages prolongés automatiquement, voir [Limites](#limites)).
+
+**Depuis le 6 novembre 2026** (482 passages d'interview et de discours), le locuteur est établi autrement. Deux signaux indépendants doivent concorder : les ancres (la voix qui répond juste après qu'une autre l'a nommé) et un juge qui lit les échanges et cite ses preuves. Chaque passage est ensuite relu deux fois par un second juge, à la recherche de paroles qui ne sont pas de lui (question, relance, annonce, extrait diffusé, autre invité), et chaque signalement est relu à la main. Sur le premier lot de 345 passages, 26 ont été signalés : 14 portions d'intervieweur ont été retirées et 3 passages écartés. En cas de doute, la portion est coupée : silence plutôt qu'attribution fausse.
 
 **4. Découpage.** Un passage ne franchit jamais une prise de parole, et les coupes tombent sur des fins de phrase. Les montages d'extraits en ouverture de vidéo et les chants de clôture de meeting sont écartés. Les bornes `t_debut_s` et `t_fin_s` sont calculées sur les horodatages au mot.
 
@@ -121,6 +124,7 @@ Un objet JSON par ligne dans [`data/corpus.jsonl`](data/corpus.jsonl). Schéma f
 | `themes` | liste | jusqu'à trois thèmes |
 | `nb_mots` | entier | longueur du passage |
 | `extrait_complet` | booléen | le passage se termine sur une ponctuation |
+| `texte_prolonge_automatiquement` | booléen | interview dont la fin a été prolongée automatiquement ; à écarter pour citer mot à mot (voir Limites) |
 | `transcription_verifiee` | booléen | transcription professionnelle avec séparation des locuteurs |
 
 ## Démarrer
@@ -147,13 +151,15 @@ Les vecteurs ne sont pas versionnés : ils dépendent du modèle et pèsent 27 M
 
 ## Limites
 
-- **96 passages sont du texte de campagne sur lui**, pas de lui : descriptifs de vidéo, comptes rendus de déplacement, communication municipale. Ils sont étiquetés `voix: equipe` et `paroles_de_dl: false`. Filtrez.
+- **162 passages sont du texte de campagne sur lui**, pas de lui : descriptifs de vidéo, comptes rendus de déplacement, communication municipale. Ils sont étiquetés `voix: equipe` et `paroles_de_dl: false`. Filtrez.
 - **La règle d'attribution de l'écrit social est lexicale.** Elle ne lit pas le sens. Elle manque le compte tiers qui raconte un événement sans jamais prendre David Lisnard pour sujet. Les cas repérés sont corrigés dans `data/revision-voix-posts.csv` ; il en reste probablement.
-- **79 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » sans la question qui précédait.** « Oui, oui, il y a trop d'immigration quantitativement puisque… » : oui à quoi. La question du journaliste n'entre pas dans le corpus, par principe, et elle n'est pas conservée à part. Le timecode de `url_source` ouvre la vidéo à la seconde : c'est là qu'on retrouve le contexte.
-- **3 003 passages sur 4 764 portent un timecode.** Pour ceux-là, `url_source` ouvre la vidéo à la seconde exacte. Vérifiez à l'écoute avant toute citation publique.
-- **708 passages ont une transcription professionnelle vérifiée.** Les autres viennent d'une extraction antérieure, fiable sur le fond, moins sur la ponctuation.
-- **2 470 passages sur 4 764 se terminent sur une ponctuation.** Filtrez sur `extrait_complet` pour citer mot à mot.
-- **1 012 passages restent en thème « divers »**, pour l'essentiel des fragments de moins de 25 mots. Les thèmes sont une aide au tri, pas une classification de référence.
+- **126 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » sans la question qui précédait.** « Oui, oui, il y a trop d'immigration quantitativement puisque… » : oui à quoi. La question du journaliste n'entre pas dans le corpus, par principe, et elle n'est pas conservée à part. Le timecode de `url_source` ouvre la vidéo à la seconde : c'est là qu'on retrouve le contexte.
+- **3 485 passages sur 6 081 portent un timecode.** Pour ceux-là, `url_source` ouvre la vidéo à la seconde exacte. Vérifiez à l'écoute avant toute citation publique.
+- **1 190 passages ont une transcription professionnelle vérifiée.** Les autres viennent d'une extraction antérieure, fiable sur le fond, moins sur la ponctuation.
+- **608 passages d'interview ont une fin prolongée automatiquement** jusqu'à une fin de phrase (champ `texte_prolonge_automatiquement`). Sur un échantillon de 60, environ 18 % de ces prolongements recollaient une relance de l'intervieweur. Ils n'ont pas encore été retraités : filtrez-les pour toute citation mot à mot.
+- **Les publications X de 2010 à 2025 sont attribuées par le compte de publication**, contrôlées par motifs (retweets, titres d'articles, « via ») et sur un échantillon, pas relues une à une. 146 publications X commencent par une mention : ce sont ses réponses à d'autres comptes, sans le message auquel elles répondent.
+- **3 368 passages sur 6 081 se terminent sur une ponctuation.** Filtrez sur `extrait_complet` pour citer mot à mot.
+- **1 270 passages restent en thème « divers »**, pour l'essentiel des fragments de moins de 25 mots. Les thèmes sont une aide au tri, pas une classification de référence.
 - **271 passages n'ont pas de date** : textes mis à jour en continu ou sources imprimées.
 - Les positions évoluent. Datez toujours une citation.
 

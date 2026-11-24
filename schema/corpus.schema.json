@@ -213,6 +213,10 @@
       "type": "boolean",
       "description": "Le passage se termine sur une ponctuation."
     },
+    "texte_prolonge_automatiquement": {
+      "type": "boolean",
+      "description": "Vrai pour une interview dont la fin a été prolongée automatiquement jusqu'à une fin de phrase. Sur un échantillon de 60, environ 18 % de ces prolongements recollaient une relance de l'intervieweur : à écarter pour citer mot à mot."
+    },
     "transcription_verifiee": {
       "type": "boolean",
       "description": "Transcription professionnelle avec séparation des locuteurs."

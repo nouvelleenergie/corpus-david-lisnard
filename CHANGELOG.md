@@ -3,6 +3,37 @@
 Les identifiants (`id`) ne dépendent pas du texte. Toute version qui les déplace le dit ici,
 avec sa table de correspondance.
 
+## 2.1.0, 24 novembre 2026
+
+**6 081 passages** (+1 317), dont 5 712 portant les paroles de David Lisnard. Aucun passage retiré, **aucun identifiant
+déplacé** : les 4 764 passages de la 2.0.1 sont tous retrouvés sous le même `id`. Un seul ancien
+passage change de contenu, celui qui est requalifié dans la section Attribution.
+
+### Ajouts
+
+- **473 passages d'interview** : BFMTV (« 100 % Mabrouk », « Le Grand Oral » avec Le Figaro), Europe 1,
+  RMC, LCI, RTL, Nice-Matin et Var-matin, Maires de France, TF1, « Et si l'économie sauvait l'écologie ? »,
+  et le DLive. Pour ces vidéos, le locuteur est établi sur preuve de texte et chaque passage a passé un
+  contrôle de contamination, voir le README.
+- **9 passages de discours** : Cannes, hôtel de ville, 19 octobre 2026.
+- **835 publications** des comptes de campagne, dont **508 publications X de 2010 à 2025**. Le corpus
+  remonte désormais à février 2010.
+
+### Attribution
+
+- **26 publications sont passées de `david-lisnard` à `equipe`** après relecture, dont une déjà publiée
+  dans la 2.0.1 : questions « vrai ou faux », phrases « mythe ou réalité », titres d'articles repris,
+  retweet, texte d'un tiers. Les décisions et leur motif sont dans
+  [`data/revision-voix-posts.csv`](data/revision-voix-posts.csv).
+- `equipe` passe de 96 à 162 passages.
+
+### Nouveau champ
+
+- **`texte_prolonge_automatiquement`** : vrai pour 608 interviews dont la fin a été prolongée
+  automatiquement jusqu'à une fin de phrase. Sur un échantillon de 60, environ 18 % de ces prolongements
+  recollaient une relance de l'intervieweur. Le champ permet de les écarter. Ils n'ont pas été retraités.
+- Le schéma est mis à jour.
+
 ## 2.0.1 — 15 octobre 2026
 
 Correction d'un défaut de la 2.0.0, trouvé en relisant ce qu'elle publiait.

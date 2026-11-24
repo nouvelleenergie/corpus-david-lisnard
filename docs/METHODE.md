@@ -30,6 +30,15 @@ Les trois doivent concorder. Si l'un diverge, la vidéo n'entre pas dans le corp
 
 Le champ `attribution` conserve la méthode appliquée à chaque passage.
 
+**Depuis le 6 novembre 2026**, pour les 482 passages d'interview et de discours ajoutés, la méthode change : deux signaux indépendants doivent concorder.
+
+1. **Les ancres.** La voix qui répond juste après qu'une autre voix a prononcé le nom de David Lisnard est la sienne.
+2. **Un juge** (un modèle de langage) lit les échanges et désigne la voix de David Lisnard en citant ses preuves.
+
+Avant l'écriture, chaque passage est relu **deux fois** par un second juge, à la recherche de paroles qui ne sont pas de lui : question ou relance de l'intervieweur, annonce, jingle, extrait diffusé, autre invité. Il sait que David Lisnard peut citer quelqu'un ou reprendre la question qu'on lui pose, et ces mots-là restent. Tout passage signalé est relu à la main, dans son contexte. Sur le premier lot de 345 passages, 26 ont été signalés : 9 étaient de vrais mots de lui, 14 portions d'intervieweur ont été retirées de la phrase, 3 passages ont été écartés. Un second contrôle ne signalait plus rien. En cas de doute sur qui parle, la portion est coupée.
+
+Les interviews plus anciennes restent attribuées par les trois signaux ci-dessus. Une limite les concerne : 608 d'entre elles ont vu leur fin prolongée automatiquement jusqu'à une fin de phrase, et ce prolongement recollait parfois une relance de l'intervieweur (environ 18 % sur un échantillon de 60). Le champ `texte_prolonge_automatiquement` les désigne.
+
 ## 2 bis. Qui parle dans une publication de réseau social
 
 Les trois signaux ci-dessus valent pour l'oral. Ils ne valent pas pour l'écrit : une publication n'a pas de tour de parole, et un compte de campagne publie trois choses mélangées.
@@ -40,7 +49,7 @@ Les trois signaux ci-dessus valent pour l'oral. Ils ne valent pas pour l'écrit 
 | ses mots, plus un crédit | « ... » @davidlisnard hier soir à Benfeld. | `david-lisnard` |
 | du texte sur lui | « @davidlisnard détaille la 5ᵉ phase du projet. » | `equipe` |
 
-**La provenance d'abord, et elle ne se devine pas.** Chaque publication est rattachée à son compte par son adresse, et le compte à son titulaire par la table des comptes de la collecte. `compte_source` et `compte_proprietaire` sortent de là, pas d'une lecture du texte. 96 passages viennent de comptes qui ne sont pas les siens, ou portent du texte écrit sur lui.
+**La provenance d'abord, et elle ne se devine pas.** Chaque publication est rattachée à son compte par son adresse, et le compte à son titulaire par la table des comptes de la collecte. `compte_source` et `compte_proprietaire` sortent de là, pas d'une lecture du texte. 162 passages viennent de comptes qui ne sont pas les siens, ou portent du texte écrit sur lui.
 
 **Ensuite le texte.** Le passage est découpé en segments, les citations étant masquées d'abord pour ne pas être coupées. Chaque segment qui le désigne est pesé :
 
@@ -52,7 +61,7 @@ Quand le passage est classé `equipe`, ce qui s'y trouve entre guillemets ressor
 
 **Deux garde-fous.** Les liens sont retirés avant toute détection, parce qu'une adresse porte souvent son nom (`/interview-exclusive-de-david-lisnard-sur-cannes-radio`). Et si la séparation du cadre fait perdre plus de 40 % des mots du passage, elle est abandonnée et le texte entier est publié tel quel : mieux vaut un crédit résiduel qu'une citation tronquée.
 
-**Ce que la règle ne sait pas faire.** Elle est lexicale, elle ne lit pas le sens. Elle ne voit pas le compte tiers qui raconte un événement sans jamais le prendre pour sujet, ni les publications au format « mythe ou réalité », où les phrases entre guillemets sont les idées reçues qu'il réfute et non ses positions. La règle sert donc à **présélectionner**. Les cas qu'un motif ne peut pas trancher ont été relus un par un, et chaque décision est publiée avec son motif dans [`../data/revision-voix-posts.csv`](../data/revision-voix-posts.csv). La relecture tranche aussi sur la citation, colonne `citation` : sans elle, l'extraction automatique prendrait les « mythes » réfutés pour ses positions. Le code de la règle est dans [`../scripts/lib_voix_post.py`](../scripts/lib_voix_post.py).
+**Ce que la règle ne sait pas faire.** Elle est lexicale, elle ne lit pas le sens. Elle ne voit pas le compte tiers qui raconte un événement sans jamais le prendre pour sujet, ni les publications au format « mythe ou réalité » ou « vrai ou faux », où la phrase publiée est l'idée reçue qu'il réfute ou la question posée par le compte, et non sa position. La règle sert donc à **présélectionner**. Les cas qu'un motif ne peut pas trancher ont été relus un par un, et chaque décision est publiée avec son motif dans [`../data/revision-voix-posts.csv`](../data/revision-voix-posts.csv). La relecture tranche aussi sur la citation, colonne `citation` : sans elle, l'extraction automatique prendrait les « mythes » réfutés pour ses positions. Le code de la règle est dans [`../scripts/lib_voix_post.py`](../scripts/lib_voix_post.py).
 
 ## 2 ter. Les identifiants
 
@@ -142,6 +151,6 @@ Le même texte publié sur plusieurs réseaux n'apparaît qu'une fois. À conten
 ## 8. Ce que nous ne garantissons pas
 
 - Que chaque mot soit transcrit exactement. Une transcription automatique se trompe sur les noms propres et les chiffres. **Vérifiez à l'écoute avant toute citation publique**, le timecode est là pour ça.
-- Que chaque réponse soit lisible seule. 79 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » : la question qui précédait n'est pas dans le corpus, par principe, et n'est pas conservée dans un champ à part. Le timecode ouvre la vidéo à la seconde, c'est là qu'est le contexte.
+- Que chaque réponse soit lisible seule. 126 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » : la question qui précédait n'est pas dans le corpus, par principe, et n'est pas conservée dans un champ à part. Le timecode ouvre la vidéo à la seconde, c'est là qu'est le contexte.
 - Que le corpus soit exhaustif. Il couvre les prises de parole repérées par notre veille, pas la totalité des interventions.
 - Que les positions soient à jour. Elles évoluent ; datez toujours.
