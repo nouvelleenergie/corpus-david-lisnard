@@ -25,7 +25,7 @@ pas une citation certifiée.
 ```python
 import json
 corpus = [json.loads(l) for l in open("data/corpus.jsonl", encoding="utf-8")]
-lui = [e for e in corpus if e["paroles_de_dl"]]      # 5 712 passages
+lui = [e for e in corpus if e["paroles_de_dl"]]      # 5 821 passages
 ```
 
 ## Les identifiants

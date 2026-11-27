@@ -3,6 +3,23 @@
 Les identifiants (`id`) ne dépendent pas du texte. Toute version qui les déplace le dit ici,
 avec sa table de correspondance.
 
+## 2.2.0, 27 novembre 2026
+
+**6 190 passages** (+109), dont 5 821 portant les paroles de David Lisnard. Aucun passage retiré ni
+modifié, aucun identifiant déplacé : les 6 081 passages de la 2.1.0 sont tous retrouvés à l'identique.
+
+### Ajouts
+
+- **109 passages d'interview**, quatre passages télé et radio de la dernière semaine de novembre :
+  France 5, « C à vous » (26 novembre, 34 passages) ; Public Sénat, Entretiens du Congrès des maires
+  (26 novembre, 12) ; France 2, « l'invité du 20 h » (25 novembre, 24) ; Public Sénat, « Bonjour chez
+  vous ! » (23 novembre, 39).
+- Même méthode d'attribution que depuis le 6 novembre : voix établie sur deux signaux concordants,
+  deux passes de contrôle de contamination. Sur ces 109 passages, 3 ont été signalés et les 3 se sont
+  révélés être de vrais mots de lui. Pour « C à vous », où 23 voix se succèdent, le reportage
+  d'ouverture et les séquences sans lui ne sont pas retenus : seule sa voix entre.
+- Aucune publication nouvelle depuis la 2.1.0.
+
 ## 2.1.0, 24 novembre 2026
 
 **6 081 passages** (+1 317), dont 5 712 portant les paroles de David Lisnard. Aucun passage retiré, **aucun identifiant

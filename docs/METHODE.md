@@ -30,7 +30,7 @@ Les trois doivent concorder. Si l'un diverge, la vidéo n'entre pas dans le corp
 
 Le champ `attribution` conserve la méthode appliquée à chaque passage.
 
-**Depuis le 6 novembre 2026**, pour les 482 passages d'interview et de discours ajoutés, la méthode change : deux signaux indépendants doivent concorder.
+**Depuis le 6 novembre 2026**, pour les 591 passages d'interview et de discours ajoutés, la méthode change : deux signaux indépendants doivent concorder.
 
 1. **Les ancres.** La voix qui répond juste après qu'une autre voix a prononcé le nom de David Lisnard est la sienne.
 2. **Un juge** (un modèle de langage) lit les échanges et désigne la voix de David Lisnard en citant ses preuves.
@@ -151,6 +151,6 @@ Le même texte publié sur plusieurs réseaux n'apparaît qu'une fois. À conten
 ## 8. Ce que nous ne garantissons pas
 
 - Que chaque mot soit transcrit exactement. Une transcription automatique se trompe sur les noms propres et les chiffres. **Vérifiez à l'écoute avant toute citation publique**, le timecode est là pour ça.
-- Que chaque réponse soit lisible seule. 126 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » : la question qui précédait n'est pas dans le corpus, par principe, et n'est pas conservée dans un champ à part. Le timecode ouvre la vidéo à la seconde, c'est là qu'est le contexte.
+- Que chaque réponse soit lisible seule. 143 passages d'interview commencent par « Oui », « Non » ou « Bien sûr » : la question qui précédait n'est pas dans le corpus, par principe, et n'est pas conservée dans un champ à part. Le timecode ouvre la vidéo à la seconde, c'est là qu'est le contexte.
 - Que le corpus soit exhaustif. Il couvre les prises de parole repérées par notre veille, pas la totalité des interventions.
 - Que les positions soient à jour. Elles évoluent ; datez toujours.
